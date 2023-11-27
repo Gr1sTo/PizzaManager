@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PizzaManager\PizzaManager.csproj" />
+  </ItemGroup>
+
 </Project>

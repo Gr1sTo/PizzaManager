@@ -11,7 +11,7 @@ namespace PizzaManager.Models
         public string Name { get; }
         public decimal Price { get; }
 
-        public Ingredient(string name, decimal price)
+        public Ingredient (string name, decimal price)
         {
             Name = name;
             Price = price;
