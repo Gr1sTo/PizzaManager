@@ -11,7 +11,7 @@ namespace PizzaManager.Models
         public string Name { get; }
         public List<Ingredient> Ingredients { get; }
 
-        public Pizza(string name, List<Ingredient> ingredients)
+        public Pizza(string name, List<Ingredient> ingredients)// данні не null + пов бути інгрид
         {
             Name = name;
             Ingredients = ingredients;

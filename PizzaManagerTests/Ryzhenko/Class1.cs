@@ -52,5 +52,23 @@
             int expectedCount = 3; // Очікувана кількість інгредієнтів після додавання
             Assert.Equal(expectedCount, orderingSystem.GetAvailableIngredients().Count);
         }
+
+        // 
+        [Fact]
+        public void AddIngredient_ShouldNotAllowDuplicateIngredients()
+        {
+            // Arrange
+            var orderingSystem = new PizzaOrderingSystem();
+            var cheese = new Ingredient("Cheese", 1.50m);
+            var duplicateCheese = new Ingredient("Cheese", 1.50m); // Той самий інгредієнт
+
+            // Act
+            orderingSystem.AddIngredient(cheese);
+            orderingSystem.AddIngredient(duplicateCheese);
+
+            // Assert
+            int expectedCount = 1; // Очікуємо тільки один унікальний інгредієнт
+            Assert.Equal(expectedCount, orderingSystem.GetAvailableIngredients().Count);
+        }
     }
 }

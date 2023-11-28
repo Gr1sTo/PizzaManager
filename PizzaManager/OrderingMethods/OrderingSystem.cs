@@ -15,22 +15,20 @@ namespace PizzaManager.OrderingMethods
             orderedPizzas = new List<Pizza>();
         }
 
-        //=====================Ryzhenko====================================
         public List<(string, decimal)> GetAvailableIngredients()
         {
             return availableIngredients.Select(ingredient => (ingredient.Name, ingredient.Price)).ToList();
         }
 
-        public void AddIngredient(Ingredient ingredient)
+        public void AddIngredient(Ingredient ingredient)//при додаванні null == незм
         {
             availableIngredients.Add(ingredient);
         }
 
-        public void RemoveIngredient(Ingredient ingredient)
+        public void RemoveIngredient(Ingredient ingredient)//якщо не має інгрид то ніч не змін 2. перевірити чи є в списку
         {
             availableIngredients.Remove(ingredient);
         }
-        //=====================Ryzhenko====================================
 
         public void AddPizzaToMenu(Pizza pizza)
         {
