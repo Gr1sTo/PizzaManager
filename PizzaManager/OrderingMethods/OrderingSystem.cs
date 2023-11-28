@@ -20,8 +20,13 @@ namespace PizzaManager.OrderingMethods
             return availableIngredients.Select(ingredient => (ingredient.Name, ingredient.Price)).ToList();
         }
 
-        public void AddIngredient(Ingredient ingredient)//при додаванні null == незм
+        public void AddIngredient(Ingredient ingredient)
         {
+            if (ingredient == null)
+            {
+                throw new ArgumentNullException(nameof(ingredient), "Ingredient cannot be null");
+            }
+
             availableIngredients.Add(ingredient);
         }
 

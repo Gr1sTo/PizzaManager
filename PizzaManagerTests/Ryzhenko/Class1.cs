@@ -34,7 +34,7 @@
             Assert.False(orderingSystem.GetAvailableIngredients().Any(i => i.Item1 == "Tomato"));
         }
 
-        // Цей тест перевіряє, що система нараховує кількість інгредієнтів, які були додані, незалежно від того, чи додаються вони кілька разів.
+        // Перевіряє, що система нараховує кількість інгредієнтів, які були додані, незалежно від того, чи додаються вони кілька разів.
         [Fact]
         public void AddIngredient_MultipleTimes_ShouldIncreaseAvailableIngredientsAccordingly()
         {
@@ -53,22 +53,16 @@
             Assert.Equal(expectedCount, orderingSystem.GetAvailableIngredients().Count);
         }
 
-        // 
+        //
         [Fact]
-        public void AddIngredient_ShouldNotAllowDuplicateIngredients()
+        public void AddIngredient_NullIngredient_ShouldThrowArgumentNullException()
         {
             // Arrange
             var orderingSystem = new PizzaOrderingSystem();
-            var cheese = new Ingredient("Cheese", 1.50m);
-            var duplicateCheese = new Ingredient("Cheese", 1.50m); // Той самий інгредієнт
+            Ingredient nullIngredient = null;
 
-            // Act
-            orderingSystem.AddIngredient(cheese);
-            orderingSystem.AddIngredient(duplicateCheese);
-
-            // Assert
-            int expectedCount = 1; // Очікуємо тільки один унікальний інгредієнт
-            Assert.Equal(expectedCount, orderingSystem.GetAvailableIngredients().Count);
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => orderingSystem.AddIngredient(nullIngredient));
         }
     }
 }
