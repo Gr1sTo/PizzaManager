@@ -15,6 +15,7 @@ namespace PizzaManager.OrderingMethods
             orderedPizzas = new List<Pizza>();
         }
 
+
         public List<(string, decimal)> GetAvailableIngredients()
         {
             return availableIngredients.Select(ingredient => (ingredient.Name, ingredient.Price)).ToList();
@@ -35,6 +36,10 @@ namespace PizzaManager.OrderingMethods
             availableIngredients.Remove(ingredient);
         }
 
+        public List<Pizza> GetAvailablePizzas()
+        {
+            return availablePizzas;
+        }
         public void AddPizzaToMenu(Pizza pizza)
         {
             availablePizzas.Add(pizza);
