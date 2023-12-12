@@ -75,8 +75,10 @@ namespace PizzaManager.OrderingMethods
         {
             return orderedPizzas.GroupBy(pizza => pizza.Name)
                                 .OrderByDescending(group => group.Count())
-                                .Select(group => group.First())
+                                .SelectMany(group => group)
+                                .Distinct()
                                 .ToList();
         }
+
     }
 }

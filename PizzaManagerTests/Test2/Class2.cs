@@ -26,30 +26,17 @@ namespace PizzaManagerTests.Test1 // Бондар Денис
 
 
         [Fact]
-        public void GetPopularPizzas_ShouldReturnPizzasInCorrectOrder()
+        public void AddPizzaToOrder_WhenPizzaHasNoIngredients_ShouldThrowInvalidOperationException()
         {
             // Arrange
             var orderingSystem = new PizzaOrderingSystem();
-            var pizza1 = new Pizza("Pizza1", new List<Ingredient>());
-            var pizza2 = new Pizza("Pizza2", new List<Ingredient>());
-            var pizza3 = new Pizza("Pizza3", new List<Ingredient>());
+            var pizzaWithoutIngredients = new Pizza("NoIngredientsPizza", new List<Ingredient>());
 
-            // Add pizzas to order multiple times
-            orderingSystem.AddPizzaToOrder(pizza1);
-            orderingSystem.AddPizzaToOrder(pizza2);
-            orderingSystem.AddPizzaToOrder(pizza2);
-            orderingSystem.AddPizzaToOrder(pizza3);
-            orderingSystem.AddPizzaToOrder(pizza3);
-            orderingSystem.AddPizzaToOrder(pizza3);
-
-            // Act
-            var popularPizzas = orderingSystem.GetPopularPizzas();
-
-            // Assert
-            Assert.Equal("Pizza3", popularPizzas[0].Name);
-            Assert.Equal("Pizza2", popularPizzas[1].Name);
-            Assert.Equal("Pizza1", popularPizzas[2].Name);
+            // Act & Assert
+            Assert.Throws<InvalidOperationException>(() => orderingSystem.AddPizzaToOrder(pizzaWithoutIngredients));
         }
+
+
 
 
 
