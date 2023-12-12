@@ -64,5 +64,17 @@
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => orderingSystem.AddIngredient(nullIngredient));
         }
+
+        [Fact]
+        public void AddPizzaToOrder_ShouldNotAllowPizzaWithoutIngredients()
+        {
+            // Arrange
+            var orderingSystem = new PizzaOrderingSystem();
+            var pizza = new Pizza("Margherita", new List<Ingredient>());
+
+            // Act & Assert
+            Assert.Throws<InvalidOperationException>(() => orderingSystem.AddPizzaToOrder(pizza));
+        }
+
     }
 }
