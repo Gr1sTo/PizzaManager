@@ -1,5 +1,4 @@
-﻿
-namespace PizzaManagerTests.Test1 // Бондар Денис 
+﻿namespace PizzaManagerTests.Test1
 {
     public class UnitTest2
     {
