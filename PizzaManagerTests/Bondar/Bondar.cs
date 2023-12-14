@@ -23,7 +23,7 @@
             Assert.False(orderingSystem.GetAvailablePizzas().Contains(pizzaToRemove));
         }
 
-
+        // Перевірка на додавання пійи без інградієнтів 
         [Fact]
         public void AddPizzaToOrder_WhenPizzaHasNoIngredients_ShouldThrowInvalidOperationException()
         {
@@ -35,9 +35,19 @@
             Assert.Throws<InvalidOperationException>(() => orderingSystem.AddPizzaToOrder(pizzaWithoutIngredients));
         }
 
+        //Перевірка чи не виконалось одне і те саме замовлення двічі
+        public void AddPizzaToOrder_DuplicateOrder()
+        {
+            // Arrange
+            var orderingSystem = new PizzaOrderingSystem();
+            var pizza = new Pizza("Pepperoni", new List<Ingredient> { /* ingredients */ });
 
+            // Act
+            orderingSystem.AddPizzaToOrder(pizza);
 
-
+            // Assert
+            Assert.Throws<InvalidOperationException>(() => orderingSystem.AddPizzaToOrder(pizza));
+        }
 
 
 
