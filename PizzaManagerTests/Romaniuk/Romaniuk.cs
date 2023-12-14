@@ -69,7 +69,29 @@ namespace PizzaManagerTests.Test1
             var availablePizzas = orderingSystem.GetAvailablePizzas();
             Assert.DoesNotContain(pizzaToRemove, availablePizzas);
         }
+        [Fact]
+        public void GetAvailablePizzas_ShouldReturnAvailablePizzasList()
+        {
+            // Arrange
+            var orderingSystem = new PizzaOrderingSystem();
+            var cheese = new Ingredient("Cheese", 1.50m);
+            var tomato = new Ingredient("Tomato", 0.75m);
+            var pizza1 = new Pizza("Margherita", new List<Ingredient> { cheese, tomato });
+            var pizza2 = new Pizza("Pepperoni", new List<Ingredient> { cheese });
 
+            orderingSystem.AddIngredient(cheese);
+            orderingSystem.AddIngredient(tomato);
+            orderingSystem.AddPizzaToMenu(pizza1);
+            orderingSystem.AddPizzaToMenu(pizza2);
+
+            // Act
+            var availablePizzas = orderingSystem.GetAvailablePizzas();
+
+            // Assert
+            Assert.Equal(2, availablePizzas.Count); // Очікується, що метод поверне список з двома піцами
+            Assert.Contains(pizza1, availablePizzas); // Перевірка, чи перша піца є в списку
+            Assert.Contains(pizza2, availablePizzas); // Перевірка, чи друга піца є в списку
+        }
     }
 
     
