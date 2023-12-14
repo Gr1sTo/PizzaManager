@@ -45,10 +45,9 @@ namespace PizzaManager.OrderingMethods
             availablePizzas.Add(pizza);
         }
 
-        public object GetOrderedPizzas()
+        public List<Pizza> GetOrderedPizzas()
         {
-            throw new NotImplementedException();
-            return orderedPizzas.ToList();
+            return new List<Pizza>(orderedPizzas);
         }
 
         public void RemovePizzaFromMenu(Pizza pizza)
