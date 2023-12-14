@@ -92,6 +92,30 @@ namespace PizzaManagerTests.Test1
             Assert.Contains(pizza1, availablePizzas); // Перевірка, чи перша піца є в списку
             Assert.Contains(pizza2, availablePizzas); // Перевірка, чи друга піца є в списку
         }
+        [Fact]
+        public void GetAvailablePizzas_ShouldNotModifyAvailablePizzasList()
+        {
+            // Підготовка
+            var orderingSystem = new PizzaOrderingSystem();
+            var cheese = new Ingredient("Cheese", 1.50m);
+            var tomato = new Ingredient("Tomato", 0.75m);
+            var pizza1 = new Pizza("Margherita", new List<Ingredient> { cheese, tomato });
+            var pizza2 = new Pizza("Pepperoni", new List<Ingredient> { cheese });
+
+            orderingSystem.AddIngredient(cheese);
+            orderingSystem.AddIngredient(tomato);
+            orderingSystem.AddPizzaToMenu(pizza1);
+            orderingSystem.AddPizzaToMenu(pizza2);
+
+            // Дія
+            var availablePizzasBefore = orderingSystem.GetAvailablePizzas();
+            orderingSystem.GetAvailablePizzas();
+            var availablePizzasAfter = orderingSystem.GetAvailablePizzas();
+
+            // Перевірка
+            Assert.Equal(availablePizzasBefore, availablePizzasAfter); // Очікується, що список не зміниться
+        }
+
     }
 
     
