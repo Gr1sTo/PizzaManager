@@ -55,8 +55,14 @@ namespace PizzaManager.OrderingMethods
             availablePizzas.Remove(pizza);
         }
 
+
         public void AddPizzaToOrder(Pizza pizza)
         {
+            if (pizza == null)
+            {
+                throw new ArgumentNullException(nameof(pizza), "Pizza cannot be null");
+            }
+
             if (pizza.Ingredients == null || !pizza.Ingredients.Any())
             {
                 throw new InvalidOperationException("Cannot add a pizza with no ingredients to the order");
@@ -65,9 +71,13 @@ namespace PizzaManager.OrderingMethods
             orderedPizzas.Add(pizza);
         }
 
-
         public void RemovePizzaFromOrder(Pizza pizza)
         {
+            if (pizza == null)
+            {
+                throw new ArgumentNullException(nameof(pizza), "Pizza cannot be null");
+            }
+
             orderedPizzas.Remove(pizza);
         }
 
