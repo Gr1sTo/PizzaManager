@@ -73,6 +73,11 @@ namespace PizzaManager.OrderingMethods
 
         public void RemovePizzaFromOrder(Pizza pizza)
         {
+            if (pizza == null)
+            {
+                throw new ArgumentNullException(nameof(pizza), "Pizza cannot be null");
+            }
+
             orderedPizzas.Remove(pizza);
         }
 
