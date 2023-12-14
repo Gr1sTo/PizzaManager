@@ -48,6 +48,7 @@ namespace PizzaManager.OrderingMethods
         public object GetOrderedPizzas()
         {
             throw new NotImplementedException();
+            return orderedPizzas.ToList();
         }
 
         public void RemovePizzaFromMenu(Pizza pizza)
@@ -71,14 +72,17 @@ namespace PizzaManager.OrderingMethods
             orderedPizzas.Remove(pizza);
         }
 
-        public List<Pizza> GetPopularPizzas()
-        {
-            return orderedPizzas.GroupBy(pizza => pizza.Name)
-                                .OrderByDescending(group => group.Count())
-                                .SelectMany(group => group)
-                                .Distinct()
-                                .ToList();
-        }
+          public List<Pizza> GetPopularPizzas()
+          {
+              return orderedPizzas.GroupBy(pizza => pizza.Name)
+                                  .OrderByDescending(group => group.Count())
+                                  .SelectMany(group => group)
+                                  .Distinct()
+                                  .ToList();
+          }
+
+        
 
     }
+
 }
