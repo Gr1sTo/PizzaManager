@@ -28,33 +28,7 @@ namespace PizzaManagerTests.Test1
             
         }
 
-        /*[Fact]
-        public void GetOrderedPizzas_ShouldReturnListOfPizzas()
-        {
-            // Arrange
-            var orderingSystem = new PizzaOrderingSystem();
-            var cheese = new Ingredient("Cheese", 1.50m);
-            var tomato = new Ingredient("Tomato", 0.75m);
-            var pizza1 = new Pizza("Margherita", new List<Ingredient> { cheese, tomato });
-            var pizza2 = new Pizza("Pepperoni", new List<Ingredient> { cheese });
-
-            orderingSystem.AddIngredient(cheese);
-            orderingSystem.AddIngredient(tomato);
-            orderingSystem.AddPizzaToOrder(pizza1);
-            orderingSystem.AddPizzaToOrder(pizza2);
-
-            // Act
-            var orderedPizzas = orderingSystem.GetOrderedPizzas();
-
-            // Assert
-            Assert.IsType<List<Pizza>>(orderedPizzas);
-            Assert.Equal(2, orderedPizzas.Count);
-            // перевірити чи серед замовлених піц є ті, які ви додали
-            Assert.Contains(pizza1, orderedPizzas);
-            Assert.Contains(pizza2, orderedPizzas);
-        }
-
-        */
+       
         [Fact]
         public void GetOrderedPizzas_ShouldReturnListOfOrderedPizzas()
         {
@@ -74,6 +48,29 @@ namespace PizzaManagerTests.Test1
             Assert.Equal("Margherita", orderedPizzas[0].Name);
             Assert.Equal(ingredientList, orderedPizzas[0].Ingredients);
         }
+
+        [Fact]
+        public void RemovePizzaFromMenu_ShouldRemovePizzaFromAvailablePizzas()
+        {
+            // Arrange
+            var orderingSystem = new PizzaOrderingSystem();
+            var cheese = new Ingredient("Cheese", 1.50m);
+            var tomato = new Ingredient("Tomato", 0.75m);
+            var pizzaToRemove = new Pizza("Margherita", new List<Ingredient> { cheese, tomato });
+
+            orderingSystem.AddIngredient(cheese);
+            orderingSystem.AddIngredient(tomato);
+            orderingSystem.AddPizzaToMenu(pizzaToRemove);
+
+            // Act
+            orderingSystem.RemovePizzaFromMenu(pizzaToRemove);
+
+            // Assert
+            var availablePizzas = orderingSystem.GetAvailablePizzas();
+            Assert.DoesNotContain(pizzaToRemove, availablePizzas);
+        }
+
     }
+
     
 }
