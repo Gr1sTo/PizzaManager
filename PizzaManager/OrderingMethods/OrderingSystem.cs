@@ -15,7 +15,6 @@ namespace PizzaManager.OrderingMethods
             orderedPizzas = new List<Pizza>();
         }
 
-
         public List<(string, decimal)> GetAvailableIngredients()
         {
             return availableIngredients.Select(ingredient => (ingredient.Name, ingredient.Price)).ToList();
@@ -55,7 +54,6 @@ namespace PizzaManager.OrderingMethods
             availablePizzas.Remove(pizza);
         }
 
-
         public void AddPizzaToOrder(Pizza pizza)
         {
             if (pizza == null)
@@ -81,17 +79,13 @@ namespace PizzaManager.OrderingMethods
             orderedPizzas.Remove(pizza);
         }
 
-          public List<Pizza> GetPopularPizzas()
-          {
-              return orderedPizzas.GroupBy(pizza => pizza.Name)
-                                  .OrderByDescending(group => group.Count())
-                                  .SelectMany(group => group)
-                                  .Distinct()
-                                  .ToList();
-          }
-
-        
-
+        public List<Pizza> GetPopularPizzas()
+        {
+            return orderedPizzas.GroupBy(pizza => pizza.Name)
+                .OrderByDescending(group => group.Count())
+                .SelectMany(group => group)
+                .Distinct()
+                .ToList();
+        }
     }
-
 }
