@@ -6,8 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\PizzaManager</DockerfileContext>
+    <DockerfileContext>..\Pizza_App</DockerfileContext>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PizzaManager\PizzaManager.csproj" />

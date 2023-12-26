@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PizzaManager": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
